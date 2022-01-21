@@ -1,0 +1,24 @@
+<h2>{{ title }}</h2>
+<form class="login__form" method="post">
+  <h3 class="form__heading">Login details</h3>
+  <input
+    type="email"
+    placeholder="Email"
+    class="login__input"
+    required
+    name="email"
+    value="{{ email }}"
+  />
+  <input
+    type="password"
+    placeholder="Password"
+    class="login__input"
+    required
+    name="pass"
+  />
+  {% if errText %}
+  <p class="form__err">{{ errText }}</p>
+  {% endif %}
+  <button class="login__button" type="submit">LOGIN</button>
+  <a href="index.php?c=User&act=signup" class="item__link">SIGNUP</a>
+</form>
