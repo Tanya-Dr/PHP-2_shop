@@ -2,11 +2,11 @@
 class M_Catalog{
     public $countGoods;
 
-	public function __construct(){
+    public function __construct(){
         $sql = "SELECT COUNT(*) AS count FROM goods";
         $res = M_DB::getInstance() -> Select($sql); 
-		$this->countGoods = $res[0]['count'];
-	}
+        $this->countGoods = $res[0]['count'];
+    }
 
     function getGoods($lastId = 0,$lastCountView){ 
         if($lastId == 0){

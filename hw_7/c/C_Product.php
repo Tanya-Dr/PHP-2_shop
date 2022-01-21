@@ -2,9 +2,9 @@
 class C_Product extends C_Base{
     private $product;
 
-	public function __construct(){
-		$this->product = new M_Product();
-	}
+    public function __construct(){
+        $this->product = new M_Product();
+    }
     
     public function action_show(){
         $id = $this->checkData($_GET['id']);
@@ -17,6 +17,6 @@ class C_Product extends C_Base{
             'backLink' => $back
         ];
         $this->content = $src;
-		$this->contentBlock = 'v_product.tmpl';
+        $this->contentBlock = 'v_product.tmpl';
     }
 }

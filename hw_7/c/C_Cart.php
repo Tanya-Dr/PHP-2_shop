@@ -2,14 +2,14 @@
 class C_Cart extends C_Base{
     private $cart;
 
-	public function __construct(){
-		$this->cart = new M_Cart();
+    public function __construct(){
+	    $this->cart = new M_Cart();
 	}
 
     public function action_index(){    
         if(!$_SESSION['id']){
             header('location: index.php');
-			exit();
+            exit();
         }    
         $this->title = 'Your cart';
         $firstRender = true;
@@ -46,7 +46,7 @@ class C_Cart extends C_Base{
     public function action_clearCart(){
         if(!$_SESSION['id']){
             header('location: index.php');
-			exit();
+            exit();
         }
         $this->title = 'Your cart';
         $res = $this->cart->clearCart($_SESSION['id']);
@@ -61,7 +61,7 @@ class C_Cart extends C_Base{
     public function action_deleteFromCart(){
         if(!$_SESSION['id']){
             header('location: index.php');
-			exit();
+            exit();
         }
         $this->title = 'Your cart';
         $idGood = $this->checkData($_POST['id']); 
@@ -74,7 +74,7 @@ class C_Cart extends C_Base{
     public function action_changeCart(){
         if(!$_SESSION['id']){
             header('location: index.php');
-			exit();
+            exit();
         }
         $this->title = 'Your cart';
         $idGood = $this->checkData($_POST['id']); 
