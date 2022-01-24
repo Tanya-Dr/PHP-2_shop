@@ -1,0 +1,9 @@
+<h2>{{ title }}</h2>
+{% if userInfo %}
+<div class="cart">
+  {% include 'v_orderGallery.tmpl' %} {% include 'v_orderForm.tmpl' %}
+</div>
+{% else %}
+<h1 class="cart__left_heading">Login to shop</h1>
+<a href="index.php?c=User&act=login" class="item__link">LOGIN</a>
+{% endif %}
