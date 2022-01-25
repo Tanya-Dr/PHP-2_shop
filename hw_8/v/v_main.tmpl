@@ -20,6 +20,9 @@
     <script defer src="js/cart.js"></script>
     {% elseif contentBlock == 'v_order.tmpl' %}
     <script defer src="js/order.js"></script>
+    {% elseif contentBlock == 'v_login.tmpl' or contentBlock == 'v_signup.tmpl'
+    %}
+    <script defer src="js/user.js"></script>
     {% endif %}
   </head>
   <body>

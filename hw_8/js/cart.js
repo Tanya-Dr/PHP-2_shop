@@ -1,11 +1,11 @@
 function addToCart() {
   event.preventDefault();
-  let id = $(event.target).data("id");
-  let str = "id=" + id;
   $.ajax({
     type: "POST",
     url: "index.php?c=Cart&act=addToCart",
-    data: str,
+    data: {
+      id: $(event.target).data("id"),
+    },
     success: function (data) {
       if (data == "not authorized") {
         data =
@@ -25,11 +25,13 @@ $(window).click(function (e) {
 });
 
 function deleteFromCart() {
-  let str = "id=" + $(event.target).data("id");
+  event.preventDefault();
   $.ajax({
     type: "POST",
     url: "index.php?c=Cart&act=deleteFromCart",
-    data: str,
+    data: {
+      id: $(event.target).data("id"),
+    },
     success: function (answer) {
       $(".content").html(answer);
     },
@@ -48,12 +50,14 @@ function clearCart() {
 }
 
 function changeQuantity() {
-  let str =
-    "count=" + $(event.target).val() + "&id=" + $(event.target).data("id");
+  event.preventDefault();
   $.ajax({
     type: "POST",
     url: "index.php?c=Cart&act=changeCart",
-    data: str,
+    data: {
+      count: $(event.target).val(),
+      id: $(event.target).data("id"),
+    },
     success: function (answer) {
       $(".content").html(answer);
     },

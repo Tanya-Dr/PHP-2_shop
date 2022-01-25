@@ -2,13 +2,13 @@ function showGallery() {
   event.preventDefault();
   let n = $(".product").length;
   let countGoods = $(event.target).data("count");
-  let lastId = $(".product__link").last().data("id");
-  let lastCountView = $(".product__link").last().data("count");
-  let str = "lastId=" + lastId + "&lastCountView=" + lastCountView;
   $.ajax({
     type: "POST",
     url: "index.php",
-    data: str,
+    data: {
+      lastId: $(".product__link").last().data("id"),
+      lastCountView: $(".product__link").last().data("count"),
+    },
     success: function (data) {
       $(".catalog").append(data);
       if (n + 5 >= countGoods) {

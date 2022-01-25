@@ -1,14 +1,13 @@
 <h2>{{ title }}</h2>
-<form class="signup__form" method="post">
+<form class="signup__form">
   <label for="nickname" class="profile__label">
     <span>Your name</span>
     <input
       required
-      name="nickname"
+      id="nickname"
       type="text"
       placeholder="Name"
       class="login__input"
-      value="{{ nickname }}"
     />
   </label>
   <label for="email" class="profile__label">
@@ -18,8 +17,7 @@
       placeholder="Email"
       class="login__input"
       required
-      name="email"
-      value="{{ email }}"
+      id="email"
     />
   </label>
   <label for="pass" class="profile__label">
@@ -29,7 +27,7 @@
       placeholder="Password"
       class="login__input"
       required
-      name="pass"
+      id="pass"
     />
   </label>
   <label for="pass" class="profile__label">
@@ -39,12 +37,9 @@
       placeholder="Password"
       class="login__input"
       required
-      name="passConfirm"
+      id="passConfirm"
     />
   </label>
-  {% if errText %}
-  <p class="form__err">{{ errText }}</p>
-  {% endif %}
   <button class="login__button button_registration" type="submit">
     SIGNUP
   </button>

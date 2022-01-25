@@ -1,5 +1,4 @@
 <h2>{{ title }}</h2>
-{% if userInfo %}
 <div class="cart">
   <div class="cart__left">
     <div class="cart__item">
@@ -76,8 +75,10 @@
       {% endif %}
     </div>
     <div class="cart__click">
-      <a onclick="clearCart()" class="button_cart">clear shopping cart</a>
       <a href="index.php" class="button_cart">continue shopping</a>
+      {% if totalSum %}
+      <a onclick="clearCart()" class="button_cart">clear shopping cart</a>
+      {% endif %}
     </div>
   </div>
 
@@ -88,13 +89,11 @@
         <span class="cart__heading_select">{{ totalSum }} </span>
       </h3>
       <div class="cart__line"></div>
+      {% if totalSum %}
       <a href="index.php?c=Order" class="button_cart button_check">
         PROCEED TO CHECKOUT
       </a>
+      {% endif %}
     </div>
   </div>
 </div>
-{% else %}
-<h1 class="cart__left_heading">Login to shop</h1>
-<a href="index.php?c=User&act=login" class="item__link">LOGIN</a>
-{% endif %}
