@@ -8,4 +8,28 @@ class M_Order{
         }   
         return $orders;
     }
+
+    public function createOrder($idUser, $address, $tel, $delivery, $total){
+        $date = date("Y-m-d H:i:s");
+        $object = [
+            'statusOrder' => 1,
+            'dateOrder' => $date,
+            'totalSum' => $total,
+            'deliveryPrice' => $delivery,
+            'address' => $address,
+            'phoneNumber' => $tel,
+            'idUser' => $idUser
+        ];
+        $resInsert = M_DB::getInstance() -> Insert('orders', $object);
+        if(!$resInsert){
+            return "Error with insert";
+        }
+        $object = ['idOrder' => $resInsert];
+        $where = "idUser=$idUser AND idOrder=0";
+        $resUpdate = M_DB::getInstance() -> Update('cart', $object, $where);
+        if(!$resUpdate){
+            return "Error with insert";
+        }
+        return 'ok';
+    }
 }

@@ -32,7 +32,7 @@
       {% for item in order %}
       <div class="card order__card">
         <a
-          href="index.php?c=Product&act=show&id={{ item.goodId | escape }}"
+          href="index.php?c=Product&id={{ item.goodId | escape }}"
           class="card__link_img"
         >
           <img
@@ -44,7 +44,7 @@
         <div class="card__description order__description">
           <div class="card__link_text">
             <a
-              href="index.php?c=Product&act=show&id={{ item.goodId | escape }}"
+              href="index.php?c=Product&id={{ item.goodId | escape }}"
               class="card__name order__name"
             >
               {{ item.title | escape | title }}

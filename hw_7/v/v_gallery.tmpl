@@ -3,7 +3,7 @@
   {% endif %} {% for item in items %}
   <div class="product">
     <a
-      href="index.php?c=Product&act=show&id={{ item.id | escape }}"
+      href="index.php?c=Product&id={{ item.id | escape }}"
       class="product__link"
       data-id="{{ item.id | escape }}"
       data-count="{{ item.countView | escape }}"
@@ -14,7 +14,7 @@
     /></a>
     <div class="product__content">
       <a
-        href="index.php?c=Product&act=show&id={{ item.id | escape }}"
+        href="index.php?c=Product&id={{ item.id | escape }}"
         class="product__name"
         data-id="{{ item.id | escape }}"
         >{{ item.title | escape | title }}</a

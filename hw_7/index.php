@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'autoload.php';
+date_default_timezone_set('Europe/Moscow');
 
 $action = 'action_';
 $action .=(isset($_GET['act'])) ? $_GET['act'] : 'index';

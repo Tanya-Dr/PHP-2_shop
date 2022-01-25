@@ -13,19 +13,20 @@ class C_User extends C_Base{
 		}
 		$this->title = 'LOGIN';
 
-		$errText = "";
-		$email = "";
-    	if($this->isPost()){
+		$this->contentBlock = 'v_login.tmpl';
+		if($this->isPost()){
 			$email = $this->checkData($_POST['email']);
 			$pass = $this->checkData($_POST['pass']);
-        	$errText = $this->user->login($email,$pass);		
+			$errText = $this->user->login($email,$pass);		
 			if($errText == "success"){
-				header('location: index.php?c=User&act=profile');
-				exit();
+				$this->needToRender = false;
+				echo "ok";
+			}else{
+				$this->ajax = true;
+				$this->content = ['errText' => $errText];
+				$this->contentBlock = 'v_error.tmpl';
 			}
-		}
-		$this->content = ['errText' => $errText,'email' => $email];
-		$this->contentBlock = 'v_login.tmpl';
+		}		
 	}
 
 	public function action_signup(){
@@ -34,10 +35,7 @@ class C_User extends C_Base{
 			exit();
 		}
 		$this->title = 'SIGNUP';
-
-		$errText = "";
-		$email = "";
-		$nickname = "";
+		$this->contentBlock = 'v_signup.tmpl';
 		if($this->isPost()){
 			$email = $this->checkData($_POST['email']);
 			$nickname = $this->checkData($_POST['nickname']);
@@ -50,12 +48,14 @@ class C_User extends C_Base{
 				$errText = $this->user->signup($email,$pass,$nickname);
 			}            		
 			if($errText == "success"){
-				header('location: index.php?c=User&act=profile');
-				exit();
+				$this->needToRender = false;
+				echo "ok";
+			}else{
+				$this->ajax = true;
+				$this->content = ['errText' => $errText];
+				$this->contentBlock = 'v_error.tmpl';
 			}
 		}
-		$this->content = ['errText' => $errText,'email' => $email, 'nickname' => $nickname];
-		$this->contentBlock = 'v_signup.tmpl';
 	}
 
 	public function action_profile(){

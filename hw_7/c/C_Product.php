@@ -6,7 +6,7 @@ class C_Product extends C_Base{
         $this->product = new M_Product();
     }
     
-    public function action_show(){
+    public function action_index(){
         $id = $this->checkData($_GET['id']);
         $back = $_SERVER['HTTP_REFERER'];
 

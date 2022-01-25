@@ -1,7 +1,7 @@
 <?php
 class M_Cart{
     function getTotalSum($idUser){
-        $sql = "SELECT SUM(goods.price * cart.quantity) AS sum FROM cart JOIN goods ON cart.idGood = goods.id WHERE cart.idUser=$idUser AND cart.idOrder = 0";
+        $sql = "SELECT ROUND(SUM(goods.price * cart.quantity),2) AS sum FROM cart JOIN goods ON cart.idGood = goods.id WHERE cart.idUser=$idUser AND cart.idOrder = 0";
         $res = M_DB::getInstance() -> Select($sql); 
         return $res[0]['sum'];
     }
