@@ -7,18 +7,21 @@
       class="product__link"
       data-id="{{ item.id | escape }}"
       data-count="{{ item.countView | escape }}"
-      ><img
+    >
+      <img
         src="{{ pathToPhoto }}/{{ item.img | escape }}"
         class="product__img"
         alt="{{ item.title | escape }}"
-    /></a>
+      />
+    </a>
     <div class="product__content">
       <a
         href="index.php?c=Product&id={{ item.id | escape }}"
         class="product__name"
         data-id="{{ item.id | escape }}"
-        >{{ item.title | escape | title }}</a
       >
+        {{ item.title | escape | title }}
+      </a>
       <p class="product__text">{{ item.shortInfo | escape }}</p>
       <p class="product__price">
         {{ item.price | escape |  number_format(2, '.', '')}}

@@ -10,7 +10,7 @@ class C_Order extends C_Base{
 		if(!$_SESSION['id']){
 			header('location: index.php?c=User&act=login');
 		}
-		$this->title = 'Your order';
+		$this->title = 'YOUR ORDER';
 		$cart = new M_Cart();
 		$items = $cart->getCart($_SESSION['id']);
 		$totalSum = $cart->getTotalSum($_SESSION['id']);
@@ -32,11 +32,23 @@ class C_Order extends C_Base{
 		if(!$_SESSION['id']){
 			header('location: index.php?c=User&act=login');
 		}
-		$this->title = 'Your orders';
-		$orders = $this->order->getOrders($_SESSION['id']);
+		$this->title = 'YOUR ORDERS';
+		$lastDate = 0;
+		$firstRender = true;
+		$countOrders = $this->order->getCountOrders($_SESSION['id']);
+		if($this->isPost()){
+            $lastDate = $this->checkData($_POST['lastDate']);
+            $this->ajax = true;
+            $firstRender = false;
+        }
+		
+		$orders = $this->order->getOrders($_SESSION['id'],$lastDate);
+		
 		$src = [
 			'orders' => $orders,
-			'pathToPhoto' => PATH_TO_SMALL_PHOTO
+			'pathToPhoto' => PATH_TO_SMALL_PHOTO,
+			'firstRender' => $firstRender,
+			'countOrders' => $countOrders,
 		];
 		$this->content = $src;
 		$this->contentBlock = 'v_historyOrders.tmpl';		

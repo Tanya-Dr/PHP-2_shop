@@ -1,0 +1,67 @@
+{% if firstRender %}
+<h2>{{ title }}</h2>
+<a class="item__btn item__btn_add" href="index.php?c=Admin&act=editGoods">
+  Add good
+</a>
+<div class="catalog_edit">
+  {% endif %} {% for item in items %}
+  <div class="good" data-id="{{ item.id | escape }}">
+    <a
+      href="index.php?c=Product&id={{ item.id | escape }}"
+      class="product__link"
+      data-id="{{ item.id | escape }}"
+    >
+      <img
+        src="{{ pathToPhoto }}/{{ item.img | escape }}"
+        class="product__img"
+        alt="{{ item.title | escape }}"
+      />
+    </a>
+    <div class="good__content">
+      <p class="good__name">
+        <span>Title: </span>
+        {{ item.title | escape | title }}
+      </p>
+      <p class="good__price">
+        <span>Price: </span>
+        {{ item.price | escape |  number_format(2, '.', '')}}
+      </p>
+      <p class="good__countView">
+        <span>Count of views: </span>
+        {{ item.countView | escape }}
+      </p>
+      <p class="good__text">
+        <span>Short Info: </span><br />
+        {{ item.shortInfo | escape }}
+      </p>
+      <p class="good__text">
+        <span>Full Info: </span><br />
+        {{ item.fullInfo | escape }}
+      </p>
+    </div>
+    <div class="good__btnGroup">
+      <a
+        class="item__btn good__btn"
+        onclick="deleteGoods()"
+        data-id="{{ item.id | escape }}"
+      >
+        Delete
+      </a>
+      <a
+        class="item__btn good__btn"
+        href="index.php?c=Admin&act=editGoods&id={{ item.id | escape }}"
+      >
+        Edit
+      </a>
+    </div>
+  </div>
+  {% endfor %}{% if firstRender %}
+</div>
+<button
+  class="item__btn item__btn_show"
+  onclick="showEditGallery()"
+  data-count="{{ countGoods }}"
+>
+  Show more
+</button>
+{% endif %}

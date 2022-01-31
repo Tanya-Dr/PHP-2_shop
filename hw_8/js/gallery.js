@@ -11,7 +11,7 @@ function showGallery() {
     },
     success: function (data) {
       $(".catalog").append(data);
-      if (n + 5 >= countGoods) {
+      if (n + 10 >= countGoods) {
         $(".item__btn").css("display", "none");
       }
     },

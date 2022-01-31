@@ -1,0 +1,12 @@
+<h2>{{ title }}</h2>
+<div class="admin__content">
+  <a class="item__link" href="index.php?c=Admin&act=adminGoods">Change goods</a>
+  <a class="item__link" href="index.php?c=Admin&act=adminOrders">
+    Change orders status
+  </a>
+  {% if(admin == 2) %}
+  <a class="item__link" href="index.php?c=Admin&act=adminUsers"
+    >Change access to users</a
+  >
+  {% endif %}
+</div>

@@ -10,9 +10,22 @@ class M_Catalog{
 
     function getGoods($lastId = 0,$lastCountView){ 
         if($lastId == 0){
-            $sql = "SELECT * FROM goods ORDER BY countView DESC, id ASC LIMIT 5";
+            $sql = "SELECT * FROM goods ORDER BY countView DESC, id ASC LIMIT 10";
         }else{
-            $sql = "SELECT * FROM goods WHERE (countView = $lastCountView AND id > $lastId) OR (countView < $lastCountView) ORDER BY countView DESC, id ASC LIMIT 5";
+            $sql = "SELECT * FROM goods WHERE (countView = $lastCountView AND id > $lastId) OR (countView < $lastCountView) ORDER BY countView DESC, id ASC LIMIT 10";
+        }           
+        $res = M_DB::getInstance() -> Select($sql); 
+        foreach($res as $row){
+            $items[] = $row;
+        }   
+        return $items;
+    }
+
+    function getGoodsToEdit($lastId = 0){
+        if($lastId == 0){
+            $sql = "SELECT * FROM goods ORDER BY id ASC LIMIT 5";
+        }else{
+            $sql = "SELECT * FROM goods WHERE id > $lastId ORDER BY id ASC LIMIT 5";
         }           
         $res = M_DB::getInstance() -> Select($sql); 
         foreach($res as $row){

@@ -26,6 +26,7 @@ class C_Catalog extends C_Base{
             'firstRender' => $firstRender,
             'countGoods' => $countGoods
         ];
+        
         $this->content = $src;
         $this->contentBlock = 'v_gallery.tmpl';
     }

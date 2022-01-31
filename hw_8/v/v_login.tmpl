@@ -8,13 +8,16 @@
     required
     id="email"
   />
-  <input
-    type="password"
-    placeholder="Password"
-    class="login__input"
-    required
-    id="pass"
-  />
+  <div class="password">
+    <input
+      type="password"
+      placeholder="Password"
+      class="login__input"
+      required
+      id="pass"
+    />
+    <i class="bi bi-eye-slash" id="togglePassword"></i>
+  </div>
   <button class="login__button" type="submit">LOGIN</button>
   <a href="index.php?c=User&act=signup" class="item__link">SIGNUP</a>
 </form>

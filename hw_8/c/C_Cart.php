@@ -11,7 +11,7 @@ class C_Cart extends C_Base{
             header('location: index.php');
             exit();
         }    
-        $this->title = 'Your cart';
+        $this->title = 'YOUR CART';
         $firstRender = true;
         $items = $this->cart->getCart($_SESSION['id']);
         if($items){
@@ -82,6 +82,6 @@ class C_Cart extends C_Base{
         $idUser = $_SESSION['id'];
         $res = $this->cart->changeCart($idUser, $idGood, $countGood);        
         $this->ajax = true;
-        $this->action_index();
+        $this->action_index();  
     }
 }

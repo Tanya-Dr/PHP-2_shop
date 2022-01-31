@@ -39,3 +39,9 @@ $(".signup__form").submit(function () {
     },
   });
 });
+
+$("#togglePassword").click(function () {
+  const type = $("#pass").attr("type") === "password" ? "text" : "password";
+  $("#pass").attr("type", type);
+  this.classList.toggle("bi-eye");
+});

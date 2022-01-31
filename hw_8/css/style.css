@@ -131,6 +131,12 @@ input[type="file"] {
   /* padding-bottom: 20px; */
 }
 
+.catalog_edit {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .product {
   display: flex;
   flex-direction: column;
@@ -431,6 +437,8 @@ input[type="file"] {
   outline-color: grey;
   padding: 12px 16px 15px;
   border-radius: 3px;
+  width: 100%;
+  box-sizing: border-box;
 }
 .login__input::placeholder {
   color: #b1b1b1;
@@ -456,6 +464,15 @@ input[type="file"] {
 .login__button:hover {
   color: #f16d7f;
   background: #ffffff;
+}
+.password {
+  display: flex;
+  align-items: center;
+}
+.password i {
+  margin-left: -29px;
+  margin-top: -4px;
+  cursor: pointer;
 }
 .profile__label {
   font-style: normal;
@@ -875,15 +892,20 @@ input[type="file"] {
 }
 
 .orders {
-  border: 2px solid #a4a4a4;
-  /* border-radius: 3px; */
+  border-radius: 5px;
   color: #4a4a4a;
   box-sizing: border-box;
   text-align: center;
   border-collapse: collapse;
+  border-style: hidden;
+  box-shadow: 0 0 0 2px #a4a4a4;
 }
-.orders td,
-tr {
+.users_table {
+  width: 100%;
+  table-layout: fixed;
+}
+.orders tr,
+td {
   border: 1px solid #a4a4a4;
 }
 .orders__row {
@@ -901,6 +923,10 @@ tr {
   border: 1px solid #a4a4a4;
   border-radius: 3px;
   text-align: center;
+  color: #4a4a4a;
+}
+.orders__select option:checked {
+  color: #ef5b70;
 }
 
 .footer {

@@ -57,4 +57,23 @@ class M_User{
         $_SESSION = [];
         session_destroy();
     }
+
+    public function getAllUsers(){
+        $sql = "SELECT * FROM users";
+        $res = M_DB::getInstance() -> Select($sql);
+        foreach($res as $key => $row){
+            $users[] = $row;
+        }   
+        return $users;
+    }
+
+    public function changeAccess($admin, $idUser){
+        $object = ['admin' => $admin];
+        $where = "id=$idUser";
+        $resUpdate = M_DB::getInstance() -> Update('users', $object, $where);
+        if(!$resUpdate){
+            return "Error with insert";
+        }
+        return 'Data updated successfully';
+    }
 }

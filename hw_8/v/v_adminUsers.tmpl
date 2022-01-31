@@ -1,0 +1,22 @@
+<h2>{{ title }}</h2>
+<table class="orders users_table">
+    <tr class="orders__row">
+        <td class="orders__heading orders__text">EMAIL</td>
+        <td class="orders__heading orders__text">NAME</td>
+        <td class="orders__heading orders__text">ADMIN</td>     
+    </tr> 
+    {% for user in users %}
+    <tr class="orders__row">
+        <td class="orders__text" data-id="{{ user.id | escape }}">{{ user.email | escape }}</td>
+        <td class="orders__text" data-id="{{ user.id | escape }}">{{ user.nickname | escape }}</td>
+        <td class="orders__text">
+            <select data-id="{{ user.id | escape }}" name="status" class="orders__select" onchange="changeAccess()">
+                <option {{ (user.admin == 2) ? 'selected' : '' }} value=2>Super admin</option>
+                <option {{ (user.admin == 1) ? 'selected' : '' }} value=1>Admin</option>
+                <option {{ (user.admin == 0) ? 'selected' : '' }} value=0>Regular user</option>
+            </select>
+        </td>
+    </tr>    
+    {% endfor %} 
+</table>
+<a href="{{ backLink }}" class="item__link">Back</a>

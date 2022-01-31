@@ -1,6 +1,7 @@
+{% if firstRender %}
 <h2>{{ title }}</h2>
 <div class="history">
-  {% for order in orders %}
+  {% endif %} {% for order in orders %}
   <div>
     <p class="card__text">
       <span class="order__title">Order number: </span>
@@ -26,8 +27,16 @@
       <span class="order__title">Order status: </span>
       {{ order[0].status | escape }}
     </p>
+    <p class="card__text">
+      <span class="order__title">Last status update: </span>
+      {{ order[0].lastUpdate | escape }}
+    </p>
   </div>
-  <div class="order">
+  <div
+    class="order"
+    data-id="{{ order[0].idOrder | escape }}"
+    data-date="{{ order[0].dateOrder | escape }}"
+  >
     <div class="order__item">
       {% for item in order %}
       <div class="card order__card">
@@ -78,6 +87,12 @@
     </div>
   </div>
   <hr />
-  {% endfor %}
+  {% endfor %} {% if firstRender %}
 </div>
+{% if countOrders > 2 %}
+<button class="item__btn" onclick="showOrders()" data-count="{{ countOrders }}">
+  Show more
+</button>
+{% endif %}
 <a href="index.php?c=User&act=profile" class="item__link">PROFILE</a>
+{% endif %}

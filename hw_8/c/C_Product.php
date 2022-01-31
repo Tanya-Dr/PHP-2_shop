@@ -10,7 +10,7 @@ class C_Product extends C_Base{
         $id = $this->checkData($_GET['id']);
         $back = $_SERVER['HTTP_REFERER'];
 
-        $item = $this->product->showProduct($id);
+        $item = $this->product->showProduct($id,true);
         $src = [
             'pathToPhoto' => PATH_TO_BIG_PHOTO,
             'item' => $item,
