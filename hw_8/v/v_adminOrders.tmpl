@@ -1,0 +1,40 @@
+<h2>{{ title }}</h2>
+<table class="orders">
+    <tr class="orders__row">
+        <td class="orders__heading orders__text">ID</td>
+        <td class="orders__heading orders__text">USER EMAIL</td>
+        <td class="orders__heading orders__text">DATE ORDER</td>
+        <td class="orders__heading orders__text">LAST UPDATE</td>
+        <td class="orders__heading orders__text">TOTAL SUM</td>
+        <td class="orders__heading orders__text">DELIVERY PRICE</td>
+        <td class="orders__heading orders__text">DELIVERY</td>
+        <td class="orders__heading orders__text">ADDRESS</td>
+        <td class="orders__heading orders__text">PHONE NUMBER</td>
+        <td class="orders__heading orders__text">STATUS</td>      
+    </tr> 
+    {% for order in orders %}
+    <tr class="orders__row">
+        <td class="orders__text">{{ order.id | escape }}</td>
+        <td class="orders__text">{{ order.email | escape }}</td>
+        <td class="orders__text">{{ order.dateOrder | escape }}</td>
+        <td class="orders__text" data-id="{{ order.id | escape }}">{{ order.lastUpdate | escape }}</td>
+        <td class="orders__text">{{ order.totalSum | escape }}</td>
+        <td class="orders__text">{{ order.deliveryPrice | escape }}</td>
+        <td class="orders__text">
+            {{ (order.deliveryPrice == 200) ? 'Pick up' : 'Courier' }} 
+        </td>
+        <td class="orders__text">{{ order.address | escape }}</td>
+        <td class="orders__text">{{ order.phoneNumber | escape }}</td>
+        <td class="orders__text">
+            <select data-id="{{ order.id | escape }}" name="status" class="orders__select" onchange="changeStatus()">
+                <option {{ (order.statusOrder == 1) ? 'selected' : '' }} value=1>Pending payment</option>
+                <option {{ (order.statusOrder == 2) ? 'selected' : '' }} value=2>Processing</option>
+                <option {{ (order.statusOrder == 3) ? 'selected' : '' }} value=3>Shipped</option>
+                <option {{ (order.statusOrder == 4) ? 'selected' : '' }} value=4>Delivered</option>
+                <option {{ (order.statusOrder == 5) ? 'selected' : '' }} value=5>Failed</option>
+            </select>
+        </td>
+    </tr>    
+    {% endfor %} 
+</table>
+<a href="{{ backLink }}" class="item__link">Back</a>

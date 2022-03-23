@@ -1,0 +1,23 @@
+<h2>{{ title }}</h2>
+<form class="login__form">
+  <h3 class="form__heading">Login details</h3>
+  <input
+    type="email"
+    placeholder="Email"
+    class="login__input"
+    required
+    id="email"
+  />
+  <div class="password">
+    <input
+      type="password"
+      placeholder="Password"
+      class="login__input"
+      required
+      id="pass"
+    />
+    <i class="bi bi-eye-slash" id="togglePassword"></i>
+  </div>
+  <button class="login__button" type="submit">LOGIN</button>
+  <a href="index.php?c=User&act=signup" class="item__link">SIGNUP</a>
+</form>

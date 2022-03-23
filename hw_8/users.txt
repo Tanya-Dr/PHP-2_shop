@@ -1,0 +1,7 @@
+admin@admin.ru с паролем 12345, 
+user1@email.ru с паролем user, 
+tanya@email.ru с паролем 123tanya,
+spider1@email.ru с паролем 22spider1,
+new@email.ru с паролем new2022,
+gb@email.ru с паролем gb2022,
+gbStudent@email.ru с паролем gbgb

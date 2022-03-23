@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% if contentBlock == 'v_gallery.tmpl'%}
+    <script defer src="js/gallery.js"></script>
+    <script defer src="js/cart.js"></script>
+    {% elseif contentBlock == 'v_product.tmpl' or contentBlock ==
+    'v_cart.tmpl'%}
+    <script defer src="js/cart.js"></script>
+    {% elseif contentBlock == 'v_order.tmpl' or contentBlock ==
+    'v_historyOrders.tmpl' %}
+    <script defer src="js/order.js"></script>
+    {% elseif contentBlock == 'v_login.tmpl' or contentBlock == 'v_signup.tmpl'
+    %}
+    <script defer src="js/user.js"></script>
+    {% elseif contentBlock == 'v_adminOrders.tmpl' or contentBlock ==
+    'v_adminUsers.tmpl' or contentBlock == 'v_adminGoods.tmpl' or contentBlock
+    == 'v_editGoods.tmpl' %}
+    <script defer src="js/admin.js"></script>
+    {% endif %}
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="top">
+        {% include 'v_header.tmpl'%}
+        <div class="content center">
+          {% include contentBlock with content %}
+        </div>
+      </div>
+      <div class="bottom">{% include 'v_footer.tmpl'%}</div>
+      {% if contentBlock == 'v_gallery.tmpl' or contentBlock ==
+      'v_product.tmpl'%}
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <p id="myModal_p"></p>
+          <span class="close">&times;</span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
