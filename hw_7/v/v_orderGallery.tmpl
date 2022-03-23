@@ -1,0 +1,50 @@
+<div class="order__item">
+  {% if totalSum %} {% for item in items %}
+  <div class="card order__card">
+    <a
+      href="index.php?c=Product&id={{ item.idGood | escape }}"
+      class="card__link_img"
+    >
+      <img
+        src="{{ pathToPhoto }}/{{ item.img | escape }}"
+        alt="{{ item.title | escape }}"
+        class="card__img"
+      />
+    </a>
+    <div class="card__description order__description">
+      <div class="card__link_text">
+        <a
+          href="index.php?c=Product&id={{ item.idGood | escape }}"
+          class="card__name order__name"
+        >
+          {{ item.title | escape | title }}
+        </a>
+      </div>
+      <div class="card__content order__content">
+        <p class="card__text">
+          Price:
+          <span class="card__text_select">
+            {{ item.price | escape *  item.quantity | escape }}
+          </span>
+        </p>
+        <p class="card__text">
+          Color: <span class="card__text_select">Red</span>
+        </p>
+        <p class="card__text">
+          Size: <span class="card__text_select">XL</span>
+        </p>
+        <div class="card__quantity">
+          <p class="card__text">
+            Quantity:
+            <span class="card__text_select">
+              {{ item.quantity | escape }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %} {% else %}
+  <h1 class="cart__left_heading">Your cart is empty</h1>
+  {% endif %}
+</div>
